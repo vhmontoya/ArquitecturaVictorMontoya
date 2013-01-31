@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:m="http://myfaces.apache.org/tomahawk" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Editar Venta</title>
+        <link href="estilo_paginas.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body styleClass="body">
+        <h:form>
+            <p:panel header="Editar Venta" styleClass="panel_principal">
+                <br></br>
+                <p:panel styleClass="panel_error" visible="true">
+                    <h:messages styleClass="texto_error"/>
+                </p:panel>
+                <table class="tabla">
+                    <hr class="separador"/>
+                    <tr>
+                    <td>
+                        <h:inputHidden value="id venta"/>
+                    </td>
+                    </tr>
+                    <tr>
+                       <td>
+                       <table class="tabla">
+                        <tr>
+                                <td>
+                                <m:outputLabel value="CI./RUC.: " styleClass="label"/>
+                                </td>
+                                <td>
+                                <p:inputText value="Identificacion" size="50"  styleClass="texto"/>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>
+                                <m:outputLabel value="Cliente" styleClass="label"/>
+                                </td>
+                        <td>
+                                <p:inputText size="50" value="nombres y apellidos" styleClass="texto"/>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>
+                                <m:outputLabel value="Dirección" styleClass="label"/>
+                                </td>
+                        <td>
+                                <p:inputText size="50" value="-----" styleClass="texto"/>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>
+                                <m:outputLabel value="Teléfono(s)" styleClass="label"/>
+                                </td>
+                        <td>
+                                <p:inputText size="50" value="00-00" styleClass="texto"/>
+                                </td>
+                        </tr>
+                        </table>
+
+                    </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr class="separador"/>
+                            <p:panel header="Detalle de Venta" styleClass="panel_resultados_busqueda">
+                                <br></br>
+                                <p:dataTable  paginatorPosition="bottom"  rows="20" paginator="true" dynamic="true"  value="detalle_venta" var="detalle_seleccionado">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <m:outputLabel styleClass="label" value="Codigo"/>
+                                    </f:facet>
+                                    <m:outputText styleClass="texto" value="Codigo"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <m:outputLabel styleClass="label" value="Producto"/>
+                                    </f:facet>
+                                    <m:outputText styleClass="texto" value="Producto"/>
+                                </p:column>
+                                     <p:column>
+                                    <f:facet name="header">
+                                        <m:outputLabel styleClass="label" value="$ P.V.P."/>
+                                    </f:facet>
+                                    <m:outputText styleClass="texto" value="$ 0.00"/>
+                                </p:column>
+                                     <p:column>
+                                    <f:facet name="header">
+                                        <m:outputLabel styleClass="label" value="Cantidad"/>
+                                    </f:facet>
+                                    <m:outputText styleClass="texto" value="0"/>
+                                </p:column>
+                                     <p:column>
+                                    <f:facet name="header">
+                                        <m:outputLabel styleClass="label" value="Importe"/>
+                                    </f:facet>
+                                    <m:outputText styleClass="texto" value="$ 0.00"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <m:outputLabel styleClass="label" value="Editar"/>
+                                    </f:facet>
+                                    <h:commandLink action="editar_producto" >
+                                        <h:outputLabel value="Editar" styleClass="enlaces" />
+                                        <img src="../iconos/btnEditar.jpg" width="30" height="30" alt="btnEditar"/>
+
+                                    </h:commandLink>
+                                </p:column>
+                                </p:dataTable>
+                                <br></br>
+                                <center>
+                                <h:commandLink  styleClass="boton" action="nuevo_detalle">
+                                    <img src="iconos/btnNuevo.jpg" width="50" height="50" alt="btnNuevo"/>
+                                </h:commandLink>
+                                </center>
+                            </p:panel>
+                        </td>
+                    </tr>
+                </table>
+                <br></br>
+                <center>
+                    <m:commandLink styleClass="boton"  action="nueva_venta">
+                        <img src="iconos/btnGuardar.jpg" width="60" height="60" alt="btnGuardar"/>
+                    </m:commandLink>
+                    <m:commandLink styleClass="boton"  action="cancelar_venta">
+                        <img src="iconos/btnCancelar.jpg" width="60" height="60" alt="btnCancelar"/>
+                    </m:commandLink>
+                </center>
+                <p:panel visible="false">
+                    <h:messages/>
+                </p:panel>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
