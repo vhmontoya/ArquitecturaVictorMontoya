@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link href="estilo_paginas.css" rel="stylesheet" type="text/css"/>
+        <title>Inicio</title>  
+    </h:head>
+    <h:body styleClass="body">        
+        <h:form>
+            <p:panel styleClass="panel_principal">
+                <table class="tabla" >
+                    <tr>
+                    <p:panel styleClass="panel_buscar">                    
+                    <p:commandButton value="Inicio" action="principal" ></p:commandButton>                    
+                    
+                     <p:toolbarGroup align="right">
+                            <p:menuButton  value="Administración">
+                                <p:menuitem>
+                                    <h:commandLink   action="Administrar_Clientes">
+                                        <h:outputLabel styleClass="enlaces"    value="Administrar Clientes" />
+                                    </h:commandLink>
+                                </p:menuitem>                                
+                            </p:menuButton>
+                    </p:toolbarGroup>
+                    
+                    <p:toolbarGroup align="right">
+                            <p:menuButton  value="Ventas">
+                                <p:menuitem>
+                                    <h:commandLink   action="Administrar_Ventas">
+                                        <h:outputLabel styleClass="enlaces"    value="Administrar Ventas" />
+                                    </h:commandLink>
+                                </p:menuitem>                                
+                            </p:menuButton>
+                    </p:toolbarGroup>
+                    </p:panel>
+                    </tr>
+                    
+                    <tr>
+                    <th class="columna1">
+                    <p:calendar style=" font-size: 8pt" mode="true"/>
+                    </th>
+                    <td class="columna1">
+
+                    <p:panel header="Bienvenido: {Usuario} al sistema de ventas" styleClass="panel_resultados_busqueda">
+                       
+                    </p:panel>
+                    </td>
+                    <td class="columna1">
+
+                    </td>
+                    </tr>
+                </table>
+                 <p:panel visible="false">
+                    <h:messages/>
+                </p:panel>
+            </p:panel>
+        </h:form>
+        
+        <div>
+            <li>
+            <center>
+                <p:toolbar styleClass="panel_pie_pagina" >
+                    <p:toolbarGroup align="center">
+                        <h:outputLabel  value="UTPL 9no. MÓDULO DE SISTEMAS" styleClass="texto_pie_pagina"/>                 
+                        <h:outputLabel  value="Autor: Hugo Montoya" styleClass="texto_pie_pagina"/>                 
+                    </p:toolbarGroup>
+                    <p:toolbarGroup align="top">
+                        <h:outputLabel styleClass="texto_pie_pagina" value="Derechos reservados 2013 UTPL - Sistemas"/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup  align="top">
+                        <h:outputLabel styleClass="texto_pie_pagina" value="Loja-Ecuador"/>
+                    </p:toolbarGroup>
+                </p:toolbar></center>
+            </li>
+        </div>
+    </h:body>
+</html>
+

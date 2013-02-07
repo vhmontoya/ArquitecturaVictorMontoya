@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:metadata>
+            <f:param name="clienteId" value="#{clienteController.clienteId}" />
+        </f:metadata>
+    <ui:composition template="/layout/template.xhtml">
+        
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <!--<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>-->
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />  
+            </h:panelGroup>
+            <h:form id="form">
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.EditClienteLabel_nombres}" for="nombres" />
+                    <p:inputText id="nombres" value="#{clienteController.current.nombres}" title="#{bundle.EditClienteTitle_nombres}" />
+                    <h:outputLabel value="#{bundle.EditClienteLabel_apellidos}" for="apellidos" />
+                    <p:inputText id="apellidos" value="#{clienteController.current.apellidos}" title="#{bundle.EditClienteTitle_apellidos}" />
+                    <h:outputLabel value="#{bundle.EditClienteLabel_direccion}" for="direccion" />
+                    <p:inputText id="direccion" value="#{clienteController.current.direccion}" title="#{bundle.EditClienteTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditClienteLabel_genero}" for="_genero" />
+                    <h:panelGroup>
+                        <p:selectOneMenu id="_genero" value="#{clienteController.current.genero}" effect="fade" required="true" >  
+                            <f:selectItems value="#{typeListController.fuelTypeList}" var="_genero" itemLabel="#{_genero}" itemValue="#{_genero}"/>  
+                        </p:selectOneMenu>
+                    </h:panelGroup>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <p:commandButton id="save" action="#{clienteController.persist()}" value="#{bundle.save}" styleClass="btn primary"
+                                     update=":form" icon="ui-icon ui-icon-disk"/>
+
+                    <p:commandButton action="/cliente/List.xhtml?faces-redirect=true"
+                                     value="#{bundle.cancel}" styleClass="btn" immediate="true" rendered="true"/>                                              
+                </h:panelGrid>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

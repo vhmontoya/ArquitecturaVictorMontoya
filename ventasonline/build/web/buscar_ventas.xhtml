@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:m="http://myfaces.apache.org/tomahawk">
+    <h:head>
+        <title>Buscar Ventas</title>      
+        <link href="estilo_paginas.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:panel styleClass="panel_principal">
+                <table class="tabla" >
+                    <tr>
+                        <p:panel styleClass="panel_buscar">
+                        <p:inputText id="buscar" value="administra_factura.criterio_busqueda"/>
+                        <m:commandButton value="Buscar" action="administra_factura.buscar_criterio(administra_factura.criterio_busqueda)"/>
+                        <p:watermark for="buscar" value="Buscar.."/>
+                    </p:panel>
+                    </tr>
+                    <tr>
+                    <th class="columna1">
+                    <p:calendar style=" font-size: 10pt" mode="true"/>
+                    </th>
+                     <td class="columna3">
+                         <div class="div"/>
+                    </td>
+                        <td class="columna2">
+                            <p:panel header="Resultados de Búsqueda" styleClass="panel_resultados_busqueda">
+                                <p:dataTable  paginatorPosition="bottom"  rows="10" paginator="true" dynamic="true"  value="recupera ventas" var="venta_seleccionada">
+                                    <p:column>
+                                        <f:facet name="header">
+                                        <m:outputLabel value="Identificacion" styleClass="label"/>
+                                        </f:facet>
+                                        <m:outputText styleClass="texto" value="Identificacion"/>
+                                    </p:column>
+                                     <p:column>
+                                        <f:facet name="header">
+                                        <m:outputLabel value="Cliente" styleClass="label"/>
+                                        </f:facet>
+                                        <m:outputText styleClass="texto" value="nombres y apellidos"/>
+                                    </p:column>
+                                     <p:column>
+                                        <f:facet name="header">
+                                        <m:outputLabel value="$. Venta" styleClass="label"/>
+                                        </f:facet>
+                                        <m:outputText styleClass="texto" value="0.00"/>
+                                    </p:column>
+                                     <p:column>
+                                        <f:facet name="header">
+                                        <m:outputLabel value="Fecha" styleClass="label"/>
+                                        </f:facet>
+                                        <m:outputText styleClass="texto" value="año - mes - día "/>
+                                    </p:column>
+                                </p:dataTable>
+                                <br>
+                        <center>
+                            <p:commandButton value="Nuevo" action="editar_venta"></p:commandButton>
+                            <p:commandButton value="Regresar" action="regresar_inicio"></p:commandButton>
+
+                            </center>
+                            </br>
+                            </p:panel>
+                        </td>
+                    </tr>
+                </table>
+                <p:panel visible="false">
+                    <h:messages/>
+                </p:panel>
+            </p:panel>
+        </h:form>
+         <div>
+            <li>
+            <center>
+                <p:toolbar styleClass="panel_pie_pagina" >
+                    <p:toolbarGroup align="center">
+                        <h:outputLabel  value="UTPL 9no. MÓDULO DE SISTEMAS" styleClass="texto_pie_pagina"/>                 
+                        <h:outputLabel  value="Autor: Hugo Montoya" styleClass="texto_pie_pagina"/>                 
+                    </p:toolbarGroup>
+                    <p:toolbarGroup align="top">
+                        <h:outputLabel styleClass="texto_pie_pagina" value="Derechos reservados 2013 UTPL - Sistemas"/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup  align="top">
+                        <h:outputLabel styleClass="texto_pie_pagina" value="Loja-Ecuador"/>
+                    </p:toolbarGroup>
+                </p:toolbar></center>
+            </li>
+        </div>
+    </h:body>
+</html>
+

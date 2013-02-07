@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/layout/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCajaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCajaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{cajaController.selected.id}" title="#{bundle.EditCajaTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditCajaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{cajaController.selected.fecha}" title="#{bundle.EditCajaTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCajaLabel_cierre}" for="cierre" />
+                    <h:inputText id="cierre" value="#{cajaController.selected.cierre}" title="#{bundle.EditCajaTitle_cierre}" />
+                </h:panelGrid>
+                <h:commandLink action="#{cajaController.update}" value="#{bundle.EditCajaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCajaViewLink}"/>
+                <br />
+                <h:commandLink action="#{cajaController.prepareList}" value="#{bundle.EditCajaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCajaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
